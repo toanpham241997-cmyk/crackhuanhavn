@@ -1,0 +1,2141 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>HEADLOCK Premium</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>/* ========== GLOBAL STYLES ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+        input, textarea, select {
+            -webkit-text-size-adjust: 100%;    /* Dự phòng */
+        }
+        .input-giftcode {
+            font-size: 16px !important;
+            padding: 14px;
+            text-align: center;
+        }
+body {
+    font-family: 'Arial', sans-serif;
+    background: #000;
+    color: #fff;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+.page {
+    display: none;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.page.active {
+    display: flex;
+}
+
+/* ========== SPLASH SCREEN ========== */
+.splash-screen {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px;
+    cursor: pointer;
+}
+
+.logo-container {
+    margin-bottom: 40px;
+}
+
+.logo-placeholder {
+    margin: 0 auto 30px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-placeholder img {
+    max-width: 120px;
+    height: auto;
+}
+
+.premium-text {
+    font-size: 32px;
+    font-weight: bold;
+    letter-spacing: 10px;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.tap-text {
+    margin-top: 60px;
+    font-size: 16px;
+    color: #666;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+/* ========== LOGIN SCREEN ========== */
+.login-screen {
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 40px 20px;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(74, 144, 226, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(83, 83, 83, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+    animation: backgroundShift 8s ease-in-out infinite;
+    z-index: -1;
+}
+
+@keyframes backgroundShift {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+}
+
+.login-header {
+    text-align: center;
+    width: 100%;
+}
+
+.back-btn {
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.back-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.back-btn:hover::before {
+    left: 100%;
+}
+
+.back-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(-5px);
+}
+
+.login-header h1 {
+    font-size: 40px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 40px;
+    background: linear-gradient(135deg, #4a90e2, #fff, #4a90e2);
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 3s ease-in-out infinite;
+    position: relative;
+}
+
+@keyframes shimmer {
+    0%, 100% {
+        background-position: 0% center;
+    }
+    50% {
+        background-position: 200% center;
+    }
+}
+
+.login-logo {
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.login-logo-placeholder img {
+    max-width: 100px;
+    filter: drop-shadow(0 0 20px rgba(74, 144, 226, 0.5));
+    transition: all 0.3s ease;
+}
+
+.login-logo-placeholder:hover img {
+    filter: drop-shadow(0 0 30px rgba(74, 144, 226, 0.8));
+    transform: scale(1.05);
+}
+
+.key-login-text {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.login-form {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+}
+
+.key-input {
+    width: 100%;
+    padding: 18px 25px;
+    background: #2a2a2a;
+    border: 2px solid #444;
+    border-radius: 30px;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 20px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.key-input:focus {
+    border-color: #4a90e2;
+    background: #333;
+    box-shadow: 0 0 20px rgba(74, 144, 226, 0.3);
+    transform: translateY(-2px);
+}
+
+.key-input::placeholder {
+    color: #888;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(135deg, #4a90e2, #357abd);
+    border: none;
+    border-radius: 30px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(74, 144, 226, 0.5);
+}
+
+.contact-section {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.contact-section h3 {
+    font-size: 18px;
+    letter-spacing: 3px;
+    margin-bottom: 25px;
+    color: #888;
+}
+
+.social-buttons {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
+
+.social-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 8px;
+    border-radius: 12px;
+}
+
+.social-btn:hover {
+    transform: translateY(-5px) scale(1.1);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.social-btn img {
+    width: 48px;
+    object-fit: contain;
+    display: block;
+    border-radius: 6px;
+}
+
+.footer-text {
+    font-size: 13px;
+    color: #666;
+    margin-top: 25px;
+    letter-spacing: 1px;
+}
+
+/* ========== MAIN SCREEN ========== */
+.main-screen {
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+    background: rgba(0, 0, 0, 0.95);
+    border-bottom: 1px solid #222;
+}
+
+.header-title h1 {
+    font-size: 26px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.header-subtitle {
+    font-size: 11px;
+    color: #666;
+    letter-spacing: 2px;
+    margin-top: 2px;
+}
+
+.hamburger {
+    width: 32px;
+    height: 26px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 100%;
+    height: 3px;
+    background: #fff;
+    border-radius: 2px;
+    transition: 0.3s;
+}
+
+.hamburger:hover span {
+    background: #4a90e2;
+}
+
+.main-content {
+    padding: 30px 20px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.main-logo img {
+    max-width: 120px;
+    margin: 0 auto 40px;
+    display: block;
+}
+
+.toggle-section {
+    background: rgba(30, 30, 30, 0.8);
+    border-radius: 20px;
+    padding: 15px;
+    margin-bottom: 30px;
+    border: 1px solid #222;
+}
+
+.toggle-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.toggle-item:last-child {
+    border-bottom: none;
+}
+
+.toggle-label {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.toggle-icon {
+    width: 35px;
+    height: 35px;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toggle-switch {
+    position: relative;
+    width: 65px;
+    height: 34px;
+    background: #444;
+    border-radius: 17px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.toggle-switch.active {
+    background: linear-gradient(135deg, #4cd964, #3ab54a);
+}
+
+.toggle-slider {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 28px;
+    height: 28px;
+    background: #fff;
+    border-radius: 50%;
+    transition: 0.3s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    pointer-events: none;
+}
+
+.toggle-switch.active .toggle-slider {
+    left: 34px;
+}
+
+.start-buttons {
+    margin-top: 20px;
+}
+
+.start-buttons h3 {
+    margin-bottom: 20px;
+    font-size: 16px;
+    letter-spacing: 3px;
+    text-align: center;
+    color: #888;
+}
+
+.button-group {
+    display: flex;
+    gap: 0;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 2px solid #333;
+}
+
+.start-btn {
+    flex: 1;
+    padding: 20px;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    letter-spacing: 2px;
+}
+
+.start-btn.on {
+    background: linear-gradient(135deg, #555, #666);
+    color: #fff;
+}
+
+.start-btn.off {
+    background: linear-gradient(135deg, #2a2a2a, #333);
+    color: #888;
+}
+
+.start-btn:hover {
+    opacity: 0.8;
+}
+
+/* ========== INFO PANEL ========== */
+.info-panel {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 85%;
+    max-width: 380px;
+    height: 100vh;
+    background: linear-gradient(180deg, #1a1a1a, #0a0a0a);
+    z-index: 1000;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+    box-shadow: -5px 0 20px rgba(0,0,0,0.5);
+}
+
+.info-panel.active {
+    right: 0;
+}
+
+.info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px;
+    border-bottom: 1px solid #333;
+    background: rgba(0,0,0,0.5);
+}
+
+.info-header h2 {
+    font-size: 24px;
+    letter-spacing: 1px;
+}
+
+.close-btn {
+    color: #4a90e2;
+    font-size: 18px;
+    cursor: pointer;
+    font-weight: 600;
+    padding: 5px 15px;
+    transition: 0.2s;
+}
+
+.close-btn:hover {
+    color: #357abd;
+}
+
+.info-content {
+    padding: 25px;
+}
+
+.info-item {
+    background: linear-gradient(135deg, #2a2a2a, #333);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: 0.2s;
+    border: 1px solid #444;
+}
+
+.info-item:hover {
+    transform: translateX(-5px);
+    border-color: #4a90e2;
+}
+
+.info-item-text {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.info-item-subtext {
+    font-size: 13px;
+    color: #888;
+    margin-top: 5px;
+}
+
+.info-icon {
+    font-size: 28px;
+}
+
+.update-btn {
+    background: linear-gradient(135deg, #4a90e2, #357abd);
+    color: #fff;
+    border: none;
+    padding: 20px;
+    border-radius: 15px;
+    font-size: 17px;
+    font-weight: bold;
+    width: 100%;
+    margin: 25px 0;
+    cursor: pointer;
+    letter-spacing: 2px;
+    transition: 0.2s;
+}
+
+.update-btn:hover {
+    transform: translateY(-2px);
+}
+
+.copyright {
+    background: linear-gradient(135deg, #2a2a2a, #333);
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    line-height: 1.8;
+    font-size: 15px;
+    border: 1px solid #444;
+}
+
+.copyright strong {
+    display: block;
+    font-size: 16px;
+}
+
+/* ========== MODALS ========== */
+.success-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2000;
+    width: 90%;
+    max-width: 340px;
+}
+
+.success-modal.active {
+    display: block;
+    animation: modalSlide 0.3s;
+}
+
+@keyframes modalSlide {
+    from { opacity: 0; transform: translate(-50%, -60%); }
+    to { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+.modal-btn {
+    width: 100%;
+    padding: 22px;
+    border: none;
+    border-radius: 15px;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 15px;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.modal-btn.success {
+    background: #fff;
+    color: #000;
+}
+
+.modal-btn.danger {
+    background: #fff;
+    color: #ff3b30;
+}
+
+/* ========== FREE FIRE SELECTOR ========== */
+.freefire-selector {
+    background: rgba(30, 30, 30, 0.95);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 15px;
+    border: 2px solid #444;
+}
+
+.freefire-selector h3 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #fff;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+.freefire-options {
+    display: flex;
+    gap: 10px;
+}
+
+.freefire-option {
+    flex: 1;
+    padding: 15px 10px;
+    background: linear-gradient(135deg, #2a2a2a, #333);
+    border: 2px solid #444;
+    border-radius: 12px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    letter-spacing: 0.5px;
+}
+
+.freefire-option span:first-child {
+    font-size: 24px;
+}
+
+.freefire-option:hover {
+    transform: translateY(-2px);
+    border-color: #4a90e2;
+    box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+}
+
+.freefire-option.active {
+    background: linear-gradient(135deg, #4a90e2, #357abd);
+    border-color: #4a90e2;
+    box-shadow: 0 0 20px rgba(74, 144, 226, 0.5);
+    transform: translateY(-2px);
+}
+
+/* ========== BOST RAM MODAL ========== */
+.bostram-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2000;
+    width: 90%;
+    max-width: 400px;
+    background: linear-gradient(180deg, #1a1a1a, #0a0a0a);
+    border-radius: 20px;
+    border: 2px solid #333;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+}
+
+.bostram-modal.active {
+    display: block;
+    animation: modalSlide 0.3s;
+}
+
+.bostram-header {
+    background: linear-gradient(135deg, #4a90e2, #357abd);
+    padding: 20px;
+    text-align: center;
+    border-bottom: 2px solid #333;
+}
+
+.bostram-header h2 {
+    margin: 0;
+    font-size: 20px;
+    letter-spacing: 1px;
+    color: #fff;
+}
+
+.bostram-content {
+    padding: 25px;
+}
+
+.code-terminal {
+    background: #0a0a0a;
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 20px;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    line-height: 1.8;
+    min-height: 200px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.code-line {
+    color: #0f0;
+    margin-bottom: 8px;
+    opacity: 0;
+    transform: translateX(-20px);
+}
+
+.code-prompt {
+    color: #4a90e2;
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+.code-text {
+    color: #0f0;
+}
+
+.bostram-success {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 20px;
+    text-align: center;
+}
+
+.success-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #4cd964, #3ab54a);
+    color: #fff;
+    font-size: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    animation: successPulse 0.5s ease;
+    box-shadow: 0 0 30px rgba(76, 217, 100, 0.6);
+}
+
+@keyframes successPulse {
+    0% {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.success-text {
+    font-size: 22px;
+    font-weight: bold;
+    color: #4cd964;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+}
+
+/* Scrollbar cho code terminal */
+.code-terminal::-webkit-scrollbar {
+    width: 6px;
+}
+
+.code-terminal::-webkit-scrollbar-track {
+    background: #0a0a0a;
+}
+
+.code-terminal::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 3px;
+}
+
+.code-terminal::-webkit-scrollbar-thumb:hover {
+    background: #444;
+}
+
+.toggle-toast {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 180px;
+    max-width: 80vw;
+    background: #3498db;
+    color: #fff;
+    border-radius: 16px;
+    padding: 22px 32px;
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+    z-index: 3000;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.toggle-toast.active {
+    display: block;
+    opacity: 1;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 999;
+    backdrop-filter: blur(5px);
+}
+
+.overlay.active {
+    display: block;
+}
+
+
+/* ========== RESPONSIVE - CỐ ĐỊNH CHO MOBILE VÀ TABLET ========== */
+@media (min-width: 769px) {
+    body {
+        max-width: 768px;
+        margin: 0 auto;
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+    }
+}
+
+/* Mobile Portrait (320px - 480px) */
+@media (max-width: 480px) {
+    .splash-screen {
+        padding: 20px;
+    }
+    
+    .logo-placeholder img {
+        max-width: 100px;
+    }
+    
+    .premium-text {
+        font-size: 24px;
+        letter-spacing: 6px;
+    }
+    
+    .tap-text {
+        font-size: 14px;
+    }
+    
+    .login-screen {
+        padding: 20px 15px;
+    }
+    
+    .login-header h1 {
+        font-size: 28px;
+        letter-spacing: 2px;
+    }
+    
+    .login-logo-placeholder img {
+        max-width: 80px;
+    }
+    
+    .key-login-text {
+        font-size: 14px;
+        letter-spacing: 2px;
+    }
+    
+    .login-form {
+        max-width: 100%;
+    }
+    
+    .key-input {
+        padding: 15px 20px;
+        font-size: 14px;
+    }
+    
+    .login-btn {
+        padding: 15px;
+        font-size: 16px;
+    }
+    
+    .social-buttons {
+        gap: 15px;
+    }
+    
+    .social-btn img {
+        width: 40px;
+    }
+    
+    .header {
+        padding: 15px 20px;
+    }
+    
+    .header-title h1 {
+        font-size: 20px;
+        letter-spacing: 1px;
+    }
+    
+    .header-subtitle {
+        font-size: 9px;
+    }
+    
+    .hamburger {
+        width: 28px;
+        height: 22px;
+    }
+    
+    .main-content {
+        padding: 20px 15px;
+    }
+    
+    .main-logo img {
+        max-width: 100px;
+        margin-bottom: 30px;
+    }
+    
+    .toggle-section {
+        padding: 10px;
+    }
+    
+    .toggle-item {
+        padding: 15px 8px;
+    }
+    
+    .toggle-label {
+        gap: 10px;
+        font-size: 15px;
+    }
+    
+    .toggle-icon {
+        width: 30px;
+        height: 30px;
+        font-size: 18px;
+    }
+    
+    .toggle-switch {
+        width: 55px;
+        height: 30px;
+    }
+    
+    .toggle-slider {
+        width: 24px;
+        height: 24px;
+    }
+    
+    .toggle-switch.active .toggle-slider {
+        left: 28px;
+    }
+    
+    .start-buttons h3 {
+        font-size: 14px;
+        letter-spacing: 2px;
+    }
+    
+    .start-btn {
+        padding: 18px;
+        font-size: 16px;
+    }
+    
+    .info-panel {
+        width: 90%;
+    }
+    
+    .modal-btn {
+        padding: 18px;
+        font-size: 15px;
+    }
+    
+    .toggle-toast {
+        padding: 18px 28px;
+        font-size: 16px;
+    }
+}
+
+/* Mobile Landscape & Small Tablet (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+    .logo-placeholder img {
+        max-width: 140px;
+    }
+    
+    .premium-text {
+        font-size: 36px;
+    }
+    
+    .login-header h1 {
+        font-size: 36px;
+    }
+    
+    .login-logo-placeholder img {
+        max-width: 90px;
+    }
+    
+    .login-form {
+        max-width: 350px;
+    }
+    
+    .header-title h1 {
+        font-size: 24px;
+    }
+    
+    .main-logo img {
+        max-width: 130px;
+    }
+    
+    .toggle-label {
+        font-size: 16px;
+    }
+    
+    .info-panel {
+        width: 80%;
+        max-width: 400px;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #111;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 4px;
+}
+
+
+/* ========== SPARKLE EFFECTS ========== */
+.sparkle-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 100;
+}
+
+.sparkle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #fff;
+    border-radius: 50%;
+    animation: sparkleFloat 3s ease-in-out infinite;
+    box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
+}
+
+.sparkle:nth-child(2n) {
+    background: #4a90e2;
+    box-shadow: 0 0 10px 2px rgba(74, 144, 226, 0.8);
+}
+
+.sparkle:nth-child(3n) {
+    background: #ff6b6b;
+    box-shadow: 0 0 10px 2px rgba(255, 107, 107, 0.8);
+}
+
+@keyframes sparkleFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    10%, 90% {
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-20px) rotate(180deg);
+        opacity: 0.8;
+    }
+}
+
+.particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: #fff;
+    border-radius: 50%;
+    animation: particleFloat 6s ease-in-out infinite;
+}
+
+.particle:nth-child(2n) {
+    background: #4a90e2;
+    animation-delay: -2s;
+}
+
+.particle:nth-child(3n) {
+    background: #ff6b6b;
+    animation-delay: -4s;
+}
+
+@keyframes particleFloat {
+    0%, 100% {
+        transform: translate(0, 0) scale(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    90% {
+        opacity: 0.5;
+    }
+}
+
+.login-header h1 {
+    position: relative;
+    overflow: visible;
+}
+
+.title-sparkle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: linear-gradient(45deg, #ff6b6b, #4a90e2, #ffd93d);
+    border-radius: 50%;
+    animation: titleSparkle 2s ease-in-out infinite;
+    opacity: 0;
+}
+
+@keyframes titleSparkle {
+    0%, 100% {
+        transform: scale(0) rotate(0deg);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1) rotate(180deg);
+        opacity: 1;
+    }
+}
+
+.login-logo-placeholder {
+    position: relative;
+}
+
+.logo-sparkle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: linear-gradient(45deg, #4a90e2, #fff);
+    border-radius: 50%;
+    animation: logoSparkle 1.5s ease-in-out infinite;
+}
+
+@keyframes logoSparkle {
+    0%, 100% {
+        transform: translate(0, 0) scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: translate(10px, -10px) scale(1);
+        opacity: 1;
+    }
+}
+
+.login-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-sparkle {
+    position: absolute;
+    width: 20px;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+    animation: btnSparkle 2s ease-in-out infinite;
+    opacity: 0;
+}
+
+@keyframes btnSparkle {
+    0% {
+        left: -100%;
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        left: 100%;
+        opacity: 0;
+    }
+}
+
+.key-input {
+    position: relative;
+    overflow: hidden;
+}
+
+.input-sparkle {
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+    animation: inputSparkle 3s ease-in-out infinite;
+    opacity: 0;
+}
+
+@keyframes inputSparkle {
+    0%, 100% {
+        top: -100%;
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        top: 100%;
+        opacity: 0;
+    }
+}
+
+.social-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.social-sparkle {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+    animation: socialSparkle 2s ease-in-out infinite;
+    opacity: 0;
+}
+
+@keyframes socialSparkle {
+    0%, 100% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.3;
+    }
+}
+
+.enhanced-glow {
+    filter: drop-shadow(0 0 10px rgba(74, 144, 226, 0.6));
+    transition: filter 0.3s ease;
+}
+
+.enhanced-glow:hover {
+    filter: drop-shadow(0 0 20px rgba(74, 144, 226, 0.8)) 
+            drop-shadow(0 0 30px rgba(255, 255, 255, 0.4));
+}
+
+.magic-cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+    z-index: 1000;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(74, 144, 226, 0.6) 30%, transparent 70%);
+    border-radius: 50%;
+    animation: cursorSparkle 0.5s ease-out forwards;
+}
+
+@keyframes cursorSparkle {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+
+/* Active state cho start buttons */
+.start-btn.on.active {
+    background: linear-gradient(135deg, #4cd964, #3ab54a);
+    color: #fff;
+    box-shadow: 0 0 20px rgba(76, 217, 100, 0.5);
+}
+
+.start-btn.off.active {
+    background: linear-gradient(135deg, #ff3b30, #d32f2f);
+    color: #fff;
+    box-shadow: 0 0 20px rgba(255, 59, 48, 0.5);
+}
+@media screen and (max-width: 500px) {
+            .login-form {
+                padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+            }
+        }</style>
+</head>
+<body>
+    <!-- SPLASH SCREEN -->
+    <div class="page splash-screen active" id="splashScreen">
+        <div class="logo-container">
+            <div class="logo-placeholder">
+                <img id="splashLogo" src="image/logo.png" alt="">
+            </div>
+            <div class="premium-text">PREMIUM</div>
+        </div>
+        <div class="tap-text">Tap anywhere to continue</div>
+    </div>
+
+    <!-- LOGIN SCREEN -->
+    <div class="page login-screen" id="loginScreen">
+        <div class="login-header">
+            <button class="back-btn" id="loginBackBtn">← Back</button>
+            <h1>HEADLOCK</h1>
+            <div class="login-logo">
+                <div class="login-logo-placeholder">
+                   <img id="loginLogo" src="image/logo.png" alt="">
+                </div>
+            </div>
+            <p class="key-login-text">KEY LOGIN</p>
+        </div>
+
+        <div class="login-form">
+            <input type="text" class="key-input" placeholder="Enter your key..." id="keyInput">
+            <button class="login-btn" id="loginBtn">LOGIN</button>
+        </div>
+
+        <div class="contact-section">
+            <h3>CONTACT</h3>
+            <div class="social-buttons">
+                <div class="social-btn zalo"><img src="image/zalo.png" alt=""></div>
+                <div class="social-btn facebook"><img style="width:80px !important;" src="image/fbm.png" alt=""></div>
+            </div>
+            <p class="footer-text">by crackhuanha</p>
+        </div>
+    </div>
+
+    <!-- MAIN SCREEN -->
+    <div class="page main-screen" id="mainScreen">
+        <div class="header">
+            <button class="back-btn" id="mainBackBtn">← Back</button>
+            <div class="header-title">
+                <h1>HEADLOCK</h1>
+                <p class="header-subtitle">BY TIENBORAI</p>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="main-logo">
+                <img id="mainLogo" src="image/logo.png" alt="">
+            </div>
+
+            <div class="toggle-section">
+                <div class="toggle-item">
+                    <div class="toggle-label">
+                        <span class="toggle-icon">🎯</span>
+                        <span>REG FILES</span>
+                    </div>
+                    <div class="toggle-switch" data-toggle="reg">
+                        <div class="toggle-slider"></div>
+                    </div>
+                </div>
+
+                <div class="toggle-item">
+                    <div class="toggle-label">
+                        <span class="toggle-icon">🚀</span>
+                        <span>BOST RAM</span>
+                    </div>
+                    <div class="toggle-switch" data-toggle="boot">
+                        <div class="toggle-slider"></div>
+                    </div>
+                </div>
+
+                <div class="toggle-item">
+                    <div class="toggle-label">
+                        <span class="toggle-icon">💀</span>
+                        <span>HEADLOCK</span>
+                    </div>
+                    <div class="toggle-switch" data-toggle="headlock">
+                        <div class="toggle-slider"></div>
+                    </div>
+                </div>
+
+                <div class="toggle-item">
+                    <div class="toggle-label">
+                        <span class="toggle-icon">⚙️</span>
+                        <span>FIX RUNG</span>
+                    </div>
+                    <div class="toggle-switch" data-toggle="fix">
+                        <div class="toggle-slider"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="start-buttons">
+                <h3>STARTING FILES</h3>
+                <div class="button-group">
+                    <button class="start-btn on" id="onBtn">ON</button>
+                    <button class="start-btn off active" id="offBtn">OFF</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- INFO PANEL -->
+    <div class="info-panel" id="infoPanel">
+        <div class="info-header">
+            <h2>Info</h2>
+            <span class="close-btn" id="closeInfo">Done</span>
+        </div>
+        <div class="info-content">
+            <div class="info-item">
+                <div>
+                    <div class="info-item-text">Panel made by HVH</div>
+                    <div class="info-item-subtext">Zalo 0379435045</div>
+                </div>
+                <span class="info-icon"><i class="fa-solid fa-phone"></i></span>
+            </div>
+            <div class="info-item">
+                <div>
+                    <div class="info-item-text">FaceBook</div>
+                    <div class="info-item-subtext">Huấn Hà</div>
+                </div>
+                <span class="info-icon"><i class="fa-brands fa-facebook"></i></span>
+            </div>
+            <div class="info-item">
+                <div>
+                    <div class="info-item-text">TikTok</div>
+                    <div class="info-item-subtext">@havanhuanvn_love</div>
+                </div>
+                <span class="info-icon"><i class="fa-brands fa-tiktok"></i></span>
+            </div>
+            <button class="update-btn">UPDATE TO NEW+</button>
+            <div class="copyright">
+                <strong>Copyright belongs to</strong>
+                <strong>havanhuanvn_love</strong>
+                <div style="margin-top: 10px;">Thank For Using</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SUCCESS MODAL -->
+    <div class="success-modal" id="successModal">
+        <div class="freefire-selector" id="freefireSelector">
+            <h3 style="margin: 0 0 15px 0; color: #fff; font-size: 16px;">Chọn phiên bản Free Fire:</h3>
+            <div class="freefire-options">
+                <button class="freefire-option active" data-version="freefire">
+                    <span>🔥</span>
+                    <span>Free Fire</span>
+                </button>
+                <button class="freefire-option" data-version="freefiremax">
+                    <span>⚡</span>
+                    <span>Free Fire Max</span>
+                </button>
+            </div>
+        </div>
+        <button class="modal-btn success" id="openFreeFireBtn">
+            <span class="check-icon">✓</span>
+            <span>HeadLock Was Successful!</span>
+        </button>
+        <button class="modal-btn danger" id="turnOffBtn">
+            <span class="cross-icon">✕</span>
+            <span>Turn off HeadLock</span>
+        </button>
+    </div>
+
+    <!-- BOST RAM MODAL -->
+    <div class="bostram-modal" id="bostramModal">
+        <div class="bostram-header">
+            <h2>🚀 Tối ưu máy</h2>
+        </div>
+        <div class="bostram-content">
+            <div class="code-terminal" id="codeTerminal">
+                <div class="code-line"><span class="code-prompt">$</span> <span class="code-text">Initializing BOST RAM optimization...</span></div>
+                <div class="code-line"><span class="code-prompt">$</span> <span class="code-text">Scanning system memory...</span></div>
+                <div class="code-line"><span class="code-prompt">$</span> <span class="code-text">Clearing cache files...</span></div>
+                <div class="code-line"><span class="code-prompt">$</span> <span class="code-text">Optimizing RAM allocation...</span></div>
+                <div class="code-line"><span class="code-prompt">$</span> <span class="code-text">Freeing up memory blocks...</span></div>
+                <div class="code-line"><span class="code-prompt">$</span> <span class="code-text">Applying performance boost...</span></div>
+                <div class="code-line"><span class="code-prompt">$</span> <span class="code-text">Finalizing optimization...</span></div>
+            </div>
+            <div class="bostram-success" id="bostramSuccess" style="display: none;">
+                <div class="success-icon">✓</div>
+                <div class="success-text">BOST RAM thành công!</div>
+                <button class="modal-btn success" id="closeBostramBtn">Đóng</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+    <div class="toggle-toast" id="toggleToast"></div>
+    <script>
+// ==================== CẤU HÌNH SERVER ====================
+const SERVER_URL = "https://dangkhoaios.site";
+const APP_TOKEN   = "APP_IF5EJ3IKKVA1JY5AKURW1FTVDX6XIFLT";
+
+// ==================== BIẾN TOÀN CỤC ====================
+let isLoggedIn = false;
+let currentKey = "";
+let deviceId = localStorage.getItem("HEADLOCK_DEVICE_ID") || generateDeviceId();
+
+function generateDeviceId() {
+  const id = "HEADLOCK-" + Date.now() + "-" + Math.random().toString(36).substr(2, 9);
+  localStorage.setItem("HEADLOCK_DEVICE_ID", id);
+  return id;
+}
+
+// ==================== KIỂM TRA KEY (chấp nhận bất kì key nào) ====================
+async function activateKey(key) {
+  if (!key || !key.trim()) {
+    return { success: false, data: { message: "Nhập key đi bro!" } };
+  }
+  return { success: true, data: { valid: true, expiresAt: null } };
+}
+
+// ==================== TOAST THÔNG BÁO ====================
+function showToggleToast(msg) {
+  const toast = document.getElementById("toggleToast");
+  if (!toast) return;
+  toast.textContent = msg;
+  toast.classList.add("active");
+  clearTimeout(window.toastTimeout);
+  window.toastTimeout = setTimeout(() => toast.classList.remove("active"), 2000);
+}
+
+// Tính ngày còn lại (xử lý định dạng ngày VN)
+function getDaysLeft(expiresAt) {
+  if (!expiresAt) return "vĩnh viễn";
+  
+  try {
+    const [datePart, timePart] = expiresAt.split(' ');
+    const [day, month, year] = datePart.split('/');
+    
+    const expiryDate = new Date(year, month - 1, day);
+    if (timePart) {
+      const [hours, minutes] = timePart.split(':');
+      expiryDate.setHours(parseInt(hours), parseInt(minutes));
+    }
+    
+    const now = new Date();
+    const diff = expiryDate - now;
+    const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+    
+    return days > 0 ? `${days} ngày` : (days === 0 ? "Hôm nay hết hạn" : "ĐÃ HẾT HẠN");
+  } catch (error) {
+    return "không xác định";
+  }
+}
+
+// ==================== CHUYỂN TRANG ====================
+function showPage(pageId) {
+  document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+  document.getElementById(pageId).classList.add('active');
+}
+
+// Hàm lấy tên chức năng từ data-toggle
+function getToggleName(toggleType) {
+  const names = {
+    "reg": "REG FILES",
+    "boot": "BOOT RAM", 
+    "headlock": "HEADLOCK",
+    "fix": "FIX RUNG"
+  };
+  return names[toggleType] || toggleType;
+}
+
+// ==================== DOM READY ====================
+document.addEventListener("DOMContentLoaded", async () => {
+
+  // Kiểm tra key đã lưu → tự động login
+  const savedKey = localStorage.getItem("HEADLOCK_KEY");
+  if (savedKey) {
+    const check = await activateKey(savedKey);
+    if (check.success) {
+      isLoggedIn = true;
+      currentKey = savedKey;
+      showPage("mainScreen");
+      showToggleToast(`CrackBy havanhuanvn_love! Còn ${getDaysLeft(check.data.expiresAt)}`);
+    } else {
+      localStorage.removeItem("HEADLOCK_KEY");
+      showPage("splashScreen");
+    }
+  } else {
+    showPage("splashScreen");
+  }
+
+  // ==================== SPLASH → LOGIN ====================
+  document.getElementById("splashScreen").addEventListener("click", () => {
+    showPage("loginScreen");
+    initLoginEffects();
+  });
+
+  // ==================== LOGIN KEY ====================
+  const keyInput = document.getElementById("keyInput");
+  const loginBtn = document.getElementById("loginBtn");
+
+  const handleLogin = async () => {
+    const key = keyInput.value.trim();
+    if (!key) {
+      showToggleToast("Nhập key đi bro!");
+      return;
+    }
+
+    if (loginBtn.disabled) return;
+
+    loginBtn.disabled = true;
+    keyInput.disabled = true;
+    loginBtn.textContent = "Đang kiểm tra key...";
+
+    const result = await activateKey(key);
+
+    if (result.success) {
+      isLoggedIn = true;
+      currentKey = key;
+      localStorage.setItem("HEADLOCK_KEY", key);
+      keyInput.value = "";
+      keyInput.disabled = false;
+      loginBtn.disabled = false;
+      loginBtn.textContent = "LOGIN";
+      showPage("mainScreen");
+      const daysLeft = getDaysLeft(result.data.expiresAt);
+      showToggleToast(`Đăng nhập thành công! Còn ${daysLeft}`);
+    } else {
+      showToggleToast(result.data.message || "Key sai hoặc hết hạn!");
+      keyInput.disabled = false;
+      loginBtn.disabled = false;
+      loginBtn.textContent = "LOGIN";
+    }
+  };
+
+  loginBtn.addEventListener("click", handleLogin);
+  keyInput.addEventListener("keypress", e => e.key === "Enter" && handleLogin());
+
+  // ==================== BACK BUTTON ====================
+  document.querySelectorAll(".back-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      if (confirm("Thoát sẽ phải nhập lại key nha!")) {
+        localStorage.removeItem("HEADLOCK_KEY");
+        isLoggedIn = false;
+        showPage("splashScreen");
+      }
+    });
+  });
+
+    // ==================== TOGGLE BOST RAM RIÊNG (hiện popup tối ưu máy) ====================
+  // Gắn event listener với capture phase để chạy trước
+  document.addEventListener("click", async (e) => {
+    const bootToggle = e.target.closest('.toggle-switch[data-toggle="boot"]');
+    if (!bootToggle) return;
+    
+    e.stopPropagation(); // Ngăn event bubble lên
+    e.stopImmediatePropagation(); // Ngăn các event listener khác chạy
+      
+      if (!isLoggedIn) {
+        showToggleToast("Chưa nhập key!");
+        return;
+      }
+
+      const check = await activateKey(currentKey);
+      if (!check.success) {
+        showToggleToast("Key hết hạn!");
+        localStorage.removeItem("HEADLOCK_KEY");
+        isLoggedIn = false;
+        showPage("loginScreen");
+        return;
+      }
+
+      const toggle = bootToggle;
+      const isActivating = !toggle.classList.contains("active");
+
+      if (isActivating) {
+        // Hiện popup BOST RAM
+        document.getElementById("bostramModal").classList.add("active");
+        document.getElementById("overlay").classList.add("active");
+        
+        // Reset và bắt đầu animation
+        const terminal = document.getElementById("codeTerminal");
+        const successDiv = document.getElementById("bostramSuccess");
+        if (terminal) terminal.style.display = "block";
+        if (successDiv) successDiv.style.display = "none";
+        
+        // Ẩn tất cả dòng code ban đầu
+        if (terminal) {
+          const codeLines = terminal.querySelectorAll(".code-line");
+          codeLines.forEach(line => {
+            line.style.opacity = "0";
+            line.style.transform = "translateX(-20px)";
+          });
+
+          // Animation từng dòng code xuất hiện
+          codeLines.forEach((line, index) => {
+            setTimeout(() => {
+              line.style.transition = "all 0.3s ease";
+              line.style.opacity = "1";
+              line.style.transform = "translateX(0)";
+            }, index * 400);
+          });
+        }
+
+        // Sau 3 giây hiện thông báo thành công
+        setTimeout(() => {
+          if (terminal) terminal.style.display = "none";
+          if (successDiv) successDiv.style.display = "flex";
+          toggle.classList.add("active");
+          showToggleToast("Đã bật BOST RAM");
+        }, 3000);
+      } else {
+        // Tắt BOST RAM
+        toggle.classList.remove("active");
+        const modal = document.getElementById("bostramModal");
+        const overlay = document.getElementById("overlay");
+        if (modal) modal.classList.remove("active");
+        if (overlay) overlay.classList.remove("active");
+        showToggleToast("Đã tắt BOST RAM");
+      }
+  }, true); // Capture phase
+
+  // ==================== CÁC TOGGLE KHÁC (REG FILES, FIX RUNG) ====================
+  document.querySelectorAll('.toggle-switch:not([data-toggle="headlock"]):not([data-toggle="boot"])').forEach(toggle => {
+    toggle.addEventListener("click", async () => {
+      if (!isLoggedIn) return showToggleToast("Chưa nhập key!");
+
+      const check = await activateKey(currentKey);
+      if (!check.success) {
+        showToggleToast("Key hết hạn!");
+        localStorage.removeItem("HEADLOCK_KEY");
+        isLoggedIn = false;
+        showPage("loginScreen");
+        return;
+      }
+
+      toggle.classList.toggle("active");
+      const label = toggle.closest(".toggle-item")?.querySelector(".toggle-label span:last-child")?.textContent || "";
+      showToggleToast(toggle.classList.contains("active") ? `Đã bật ${label}` : `Đã tắt ${label}`);
+    });
+  });
+
+  // ==================== TOGGLE HEADLOCK RIÊNG (chỉ điều khiển toggle trên, không ảnh hưởng nút dưới) ====================
+  document.querySelector('.toggle-switch[data-toggle="headlock"]')?.addEventListener("click", async () => {
+    if (!isLoggedIn) return showToggleToast("Chưa nhập key!");
+
+    const check = await activateKey(currentKey);
+    if (!check.success) {
+      showToggleToast("Key hết hạn!");
+      localStorage.removeItem("HEADLOCK_KEY");
+      isLoggedIn = false;
+      showPage("loginScreen");
+      return;
+    }
+
+    const toggle = document.querySelector('.toggle-switch[data-toggle="headlock"]');
+    toggle.classList.toggle("active");
+    showToggleToast(toggle.classList.contains("active") ? "Đã bật HEADLOCK" : "Đã tắt HEADLOCK");
+  });
+
+  // ==================== NÚT ON / OFF DƯỚI RIÊNG BIỆT (chỉ điều khiển nút + modal, không ảnh hưởng toggle trên) ====================
+  document.getElementById("onBtn")?.addEventListener("click", async () => {
+    if (!isLoggedIn) return showToggleToast("Chưa nhập key!");
+
+    const check = await activateKey(currentKey);
+    if (!check.success) {
+      showToggleToast("Key hết hạn!");
+      localStorage.removeItem("HEADLOCK_KEY");
+      isLoggedIn = false;
+      showPage("loginScreen");
+      return;
+    }
+
+    // Chỉ bật nút + modal, KHÔNG đụng vào toggle trên
+    document.getElementById("onBtn").classList.add("active");
+    document.getElementById("offBtn").classList.remove("active");
+    document.getElementById("successModal").classList.add("active");
+    document.getElementById("overlay").classList.add("active");
+    showToggleToast("Đã bật HEADLOCK");
+  });
+
+  document.getElementById("offBtn")?.addEventListener("click", () => {
+    document.getElementById("onBtn").classList.remove("active");
+    document.getElementById("offBtn").classList.add("active");
+    document.getElementById("successModal").classList.remove("active");
+    document.getElementById("overlay").classList.remove("active");
+    showToggleToast("Đã tắt HEADLOCK");
+  });
+
+  document.getElementById("turnOffBtn")?.addEventListener("click", () => {
+    document.getElementById("offBtn").click(); // Dùng lại hàm tắt ở trên
+  });
+
+  // ==================== INFO PANEL + SOCIAL ====================
+  document.getElementById("hamburger").addEventListener("click", () => {
+    document.getElementById("infoPanel").classList.add("active");
+    document.getElementById("overlay").classList.add("active");
+  });
+
+  document.getElementById("closeInfo").addEventListener("click", () => {
+    document.getElementById("infoPanel").classList.remove("active");
+    document.getElementById("overlay").classList.remove("active");
+  });
+
+  document.getElementById("overlay").addEventListener("click", () => {
+    document.getElementById("infoPanel").classList.remove("active");
+    document.getElementById("successModal").classList.remove("active");
+    document.getElementById("bostramModal").classList.remove("active");
+    document.getElementById("overlay").classList.remove("active");
+  });
+
+  // ==================== BOST RAM MODAL ====================
+  document.getElementById("closeBostramBtn")?.addEventListener("click", () => {
+    document.getElementById("bostramModal").classList.remove("active");
+    document.getElementById("overlay").classList.remove("active");
+  });
+
+  // Social buttons
+  document.querySelector(".social-btn.zalo").addEventListener("click", () => alert("Zalo: 0379435045"));
+  document.querySelector(".social-btn.facebook").addEventListener("click", () => 
+    window.open("https://www.facebook.com/share/1ar8RfWyiv/?mibextid=wwXIfr", "_blank")
+  );
+
+  document.querySelectorAll(".info-item").forEach(item => {
+    const text = item.querySelector(".info-item-text").textContent;
+    if (text === "FaceBook") item.addEventListener("click", () => window.open("https://www.facebook.com/share/1ar8RfWyiv/?mibextid=wwXIfr", "_blank"));
+    if (text === "TikTok") item.addEventListener("click", () => window.open("https://www.tiktok.com/@havanhuanvn_love?_r=1&_t=ZS-952qWJOcyLS", "_blank"));
+    if (text === "Panel made by TBR") item.addEventListener("click", () => window.open("https://zalo.me/0379435045", "_blank"));
+  });
+
+  document.querySelector(".update-btn").addEventListener("click", () => {
+    showToggleToast("Đã là bản VIP mới nhất 2026!");
+  });
+
+  // Logo click về splash
+  document.querySelectorAll("#splashLogo, #loginLogo, #mainLogo").forEach(logo => {
+    logo.style.cursor = "pointer";
+    logo.addEventListener("click", () => showPage("splashScreen"));
+  });
+
+  // ==================== HIỆU ỨNG LOGIN SCREEN ====================
+  function initLoginEffects() {
+    createBackgroundSparkles();
+    createParticles();
+    addTitleSparkles();
+    addLogoSparkles();
+    addButtonSparkles();
+    addInputSparkles();
+    addSocialSparkles();
+    addMagicCursor();
+
+    document.querySelectorAll('.login-logo-placeholder img, .login-header h1').forEach(el => {
+      el.classList.add('enhanced-glow');
+    });
+  }
+
+  function createBackgroundSparkles() {
+    let container = document.querySelector('.sparkle-container');
+    if (container) return;
+    
+    container = document.createElement('div');
+    container.className = 'sparkle-container';
+    document.body.appendChild(container);
+
+    for (let i = 0; i < 20; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        sparkle.style.left = `${Math.random() * 100}%`;
+        sparkle.style.top = `${Math.random() * 100}%`;
+        sparkle.style.animationDelay = `${Math.random() * 3}s`;
+        sparkle.style.animationDuration = `${Math.random() * 2 + 1}s`;
+        container.appendChild(sparkle);
+    }
+  }
+
+  function createParticles() {
+    let container = document.querySelector('.particles');
+    if (container) return;
+    
+    container = document.createElement('div');
+    container.className = 'particles';
+    document.body.appendChild(container);
+
+    for (let i = 0; i < 50; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = `${Math.random() * 100}%`;
+        particle.style.top = `${Math.random() * 100}%`;
+        particle.style.width = `${Math.random() * 3 + 1}px`;
+        particle.style.height = `${Math.random() * 3 + 1}px`;
+        particle.style.animationDuration = `${Math.random() * 8 + 4}s`;
+        container.appendChild(particle);
+    }
+  }
+
+  function addTitleSparkles() {
+    const title = document.querySelector('.login-header h1');
+    if (!title || title.querySelector('.title-sparkle')) return;
+    
+    for (let i = 0; i < 8; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'title-sparkle';
+        sparkle.style.left = `${Math.random() * 100}%`;
+        sparkle.style.animationDelay = `${Math.random() * 2}s`;
+        title.appendChild(sparkle);
+    }
+  }
+
+  function addLogoSparkles() {
+    const logo = document.querySelector('.login-logo-placeholder');
+    if (!logo || logo.querySelector('.logo-sparkle')) return;
+    
+    const positions = [
+        { top: '0%', left: '0%' },
+        { top: '0%', left: '100%' },
+        { top: '100%', left: '0%' },
+        { top: '100%', left: '100%' }
+    ];
+    
+    positions.forEach((pos, i) => {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'logo-sparkle';
+        sparkle.style.top = pos.top;
+        sparkle.style.left = pos.left;
+        sparkle.style.animationDelay = `${i * 0.5}s`;
+        logo.appendChild(sparkle);
+    });
+  }
+
+  function addButtonSparkles() {
+    const button = document.querySelector('.login-btn');
+    if (!button || button.querySelector('.btn-sparkle')) return;
+    
+    const sparkle = document.createElement('div');
+    sparkle.className = 'btn-sparkle';
+    button.appendChild(sparkle);
+  }
+
+  function addInputSparkles() {
+    const input = document.querySelector('.key-input');
+    if (!input || input.querySelector('.input-sparkle')) return;
+    
+    const sparkle = document.createElement('div');
+    sparkle.className = 'input-sparkle';
+    input.appendChild(sparkle);
+  }
+
+  function addSocialSparkles() {
+    const socialButtons = document.querySelectorAll('.social-btn');
+    socialButtons.forEach(btn => {
+        if (btn.querySelector('.social-sparkle')) return;
+        const sparkle = document.createElement('div');
+        sparkle.className = 'social-sparkle';
+        btn.appendChild(sparkle);
+    });
+  }
+
+  function addMagicCursor() {
+    if (window.magicCursorAdded) return;
+    window.magicCursorAdded = true;
+    
+    document.addEventListener('mousemove', (e) => {
+        if (Math.random() > 0.7) {
+            const cursor = document.createElement('div');
+            cursor.className = 'magic-cursor';
+            cursor.style.left = `${e.clientX - 10}px`;
+            cursor.style.top = `${e.clientY - 10}px`;
+            document.body.appendChild(cursor);
+            setTimeout(() => cursor.remove(), 500);
+        }
+    });
+  }
+});
+</script>
+    <script>
+// Đoạn này thay thế hoàn toàn đoạn code cũ của bạn
+document.getElementById('openFreeFireBtn')?.addEventListener('click', () => {
+    // 1. Đóng popup trước (giữ nguyên hiệu ứng của bạn)
+    const modal   = document.getElementById('successModal');
+    const overlay = document.getElementById('overlay');
+
+    if (modal)   modal.classList.remove('active');
+    if (overlay) overlay.classList.remove('active');
+
+    // 2. Lấy phiên bản đã chọn
+    const selectedVersion = localStorage.getItem('HEADLOCK_FREEFIRE_VERSION') || 'freefire';
+    
+    // 3. Đợi popup đóng xong rồi mới mở Free Fire (rất quan trọng để không bị Safari chặn)
+    setTimeout(() => {
+        openFreeFireApp(selectedVersion);
+    }, 400); // 400ms là ngọt nhất – bạn có thể giảm xuống 300 nếu muốn nhanh hơn
+});
+
+// Xử lý chọn phiên bản Free Fire
+document.querySelectorAll('.freefire-option').forEach(btn => {
+    btn.addEventListener('click', function() {
+        // Xóa active khỏi tất cả
+        document.querySelectorAll('.freefire-option').forEach(b => b.classList.remove('active'));
+        // Thêm active vào nút được click
+        this.classList.add('active');
+        // Lưu lựa chọn
+        const version = this.getAttribute('data-version');
+        localStorage.setItem('HEADLOCK_FREEFIRE_VERSION', version);
+    });
+});
+
+// Khôi phục lựa chọn đã lưu khi mở modal
+document.getElementById('onBtn')?.addEventListener('click', () => {
+    const savedVersion = localStorage.getItem('HEADLOCK_FREEFIRE_VERSION') || 'freefire';
+    document.querySelectorAll('.freefire-option').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.getAttribute('data-version') === savedVersion) {
+            btn.classList.add('active');
+        }
+    });
+});
+
+// Hàm mở Free Fire cực mạnh – hoạt động ngon lành cả trong Web Clip
+function openFreeFireApp(version = 'freefire') {
+    // URL scheme cho từng phiên bản
+    const schemes = {
+        'freefire': 'freefireth://',
+        'freefiremax': 'freefiremax://'
+    };
+    
+    const scheme = schemes[version] || schemes['freefire'];
+    const appStore = version === 'freefiremax' 
+        ? "https://apps.apple.com/vn/app/garena-free-fire-max/id1584092163"
+        : "https://apps.apple.com/vn/app/garena-free-fire/id1300146617";
+
+    // Cách 1: Dùng iframe ẩn (cách mạnh nhất trên iOS 15–18, kể cả trong Web Clip)
+    const iframe = document.createElement("iframe");
+    iframe.style.display = "none";
+    iframe.src = scheme;
+    document.body.appendChild(iframe);
+
+    // Cách 2: Dự phòng bằng location.href (vẫn cần để chắc ăn)
+    window.location.href = scheme;
+}
+</script>
+<script>
+// CHỈ CHẶN XEM SOURCE CODE (Ctrl+U + F12 + Chuột phải View Source)
+// Các hành động khác vẫn bình thường – form admin không bị ảnh hưởng
+
+// Cửa hậu cho bạn (tuỳ chọn): thêm ?admin hoặc ?123 vào URL là tắt hết chặn
+const urlParams = new URLSearchParams(window.location.search);
+if (urlParams.has('admin') || urlParams.has('123')) return;
+
+// 1. Chặn Ctrl+U / Cmd+U
+document.addEventListener('keydown', e => {
+  if ((e.ctrlKey || e.metaKey) && e.key.toUpperCase() === 'U') {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+}, true);
+
+// 2. Chặn F12 (mở DevTools)
+document.addEventListener('keydown', e => {
+  if (e.key === 'F12' || e.keyCode === 123) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+}, true);
+
+// 3. Chặn chuột phải → chỉ chặn menu "View Page Source", không chặn chọn text hay input
+document.addEventListener('contextmenu', e => {
+  // Nếu người dùng click chuột phải vào input, textarea, button → cho phép menu bình thường
+  const tag = e.target.tagName.toUpperCase();
+  if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'BUTTON' || tag === 'SELECT') {
+    return; // không chặn
+  }
+  e.preventDefault();
+}, true);
+
+</script>
+</body>
